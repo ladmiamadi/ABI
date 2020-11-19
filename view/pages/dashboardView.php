@@ -16,27 +16,65 @@ else
 ob_start(); 
 ?>
 
-
-<div class='row bonjour'>
+<hr class="py-0 my-0">
+<div class='row p-2 bonjour mx-0'>
         <div class='col'>
-            <strong>Bonjour <?= $first_name.' '.$last_name; ?></strong>
+        <h4 class="p-3">Bonjour<em> <?= $first_name.' '.$last_name; ?></em></h4>
+
+        </div>
+        <div class="col text-right">
+        <a class="nav-link" href="./index.php?page=logOut" data-toggle="tooltip" title="Se déconnecter">Déconnexion<span class="p-3"><img class="logout"src="./IMG/logout.jpg"></span></a>
 
         </div>
 
 </div>
 
-<div class="row">
+<hr class="py-0 my-0">
+
+<div class="row modif text-center mb-4">
         <div class="col">
-            <a href="../public/index.php?page=dashboardList"><img src="../public/IMG/lister.png" height="250px" width="250px"></a>   
-        </div>
-        <div class="col pt-4">
-            <img src="../public/IMG/modifier.png" class="afficher" height="200px" width="200px"> 
+            <ul class="nav nav flex-column">
+              <li class="nav-item">
+                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/users.jpg"></a>
+                </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="../public/index.php?page=dashboardList">Afficher les utilisateurs</a>
+                </li>   
+            </ul>
+               
         </div>
         <div class="col">
-            <img src="../public/IMG/ajouter.png" height="250px" width="250px"> 
+            <ul class="nav nav flex-column">
+              <li class="nav-item">
+                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/update.jpg"></a>
+                </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="../public/index.php?page=dashboardList">Modifier les utilisateurs</a>
+                </li>   
+            </ul>
+               
         </div>
-        <div class="col pt-4">
-            <img src="../public/IMG/supprimer.png" height="200px" width="200px">
+        <div class="col">
+            <ul class="nav nav flex-column">
+              <li class="nav-item">
+                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/adduser.jpg"></a>
+                </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="../public/index.php?page=dashboardList">Ajouter un utilisateur</a>
+                </li>   
+            </ul>
+               
+        </div>
+        <div class="col">
+            <ul class="nav nav flex-column">
+              <li class="nav-item">
+                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/delete.png"></a>
+                </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="../public/index.php?page=dashboardList">Supprimer un utilisateur</a>
+                </li>   
+            </ul>
+               
         </div>
 </div>
 
@@ -70,6 +108,7 @@ ob_start();
                 <th>Nom</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>

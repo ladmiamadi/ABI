@@ -16,25 +16,37 @@
  
     <header class='container'>
        <div class='row mt-4'>
-            <div class='col-4 text-left'>
-                <a href="index.php?page=dashboard" data-toggle="tooltip" title="Accueil"><img src="../public/IMG/home (1).png" width="100px" height="100px" class="img-fluid"></a>
+            <div class='col p-4'>
+                <a href="index.php?page=dashboard" data-toggle="tooltip" title="Accueil"><img src="./IMG/home.png" width="100px" height="100px"></a>
             </div>
-            <div class='col-4 text-center dropdown'>
-                <a href="#" title="Menu" data-toggle='dropdown'><img alt='Afficher le menu' src="../public/IMG/menu-burger.png" width="100px" height="100px" class="img-fluid"
-                ></a>
-                <div class="dropdown-menu">
-                            
-                            <a class="dropdown-item" href="gestion_commerciale.php">Gestion commerciale</a>
-                            <a class="dropdown-item" href="gestion_rh.php">Gestion RH</a>
-                            <a class="dropdown-item" href="gestion_projets.php">Gestion des projets</a>
-                            <a class="dropdown-item" href="../public/index.php">Accéder au site</a>
-                        </div>
+            <div class='col p-4'>
+                <ul class="nav flex-column text-center">
+                   <li><a class="" href="gestion_commerciale.php"><img src="./IMG/commercial.png"class="gestion"></a></li>
+                   <li><a href="#" class="nav-link">Gestion commerciale</a></li> 
+                </ul>
+                
             </div>
-            <div class='col-4 text-right'>
-                <a href="./index.php?page=logOut" data-toggle="tooltip" title="Se déconnecter"><img alt="Déconnexion"src="../public/IMG/deconnexion.png" width="100px" height="100px" class="img-fluid"></a>
+            <div class='col p-4'>
+            
+            <ul class="nav flex-column text-center">
+                   <li><a class="" href="gestion_rh.php"><img src="./IMG/RH.png" class="gestion"></a></li>
+                   <li><a href='#' class="nav-link">Gestion RH</a></li> 
+                </ul>
             </div>
+            <div class="col p-4">
+            <ul class="nav flex-column text-center">
+                   <li><a class="" href="gestion_projets.php"><img src="./IMG/projet.png"class="gestion"></a></li>
+                   <li><a href="#" class="nav-link">Gestion des projets</a></li> 
+                </ul>
+            
+           
+            </div>
+                           
+                           
+            
 
        </div> 
         
 
 </header>
+

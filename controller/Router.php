@@ -41,17 +41,27 @@ class Router
         }
         elseif($this->page==='dashboard')
         {
-                                                
-         if(isset($_POST['email'])&& isset($_POST['password']))
-          {
-             
-                Dashboard::checkUser(htmlentities($_POST['email']),htmlentities($_POST['password']));
-             
-         }
-         else
-         {
-         return Controller::viewPage('../view/pages/dashboardView.php');
-         }
+                                                      
+               if(isset($_POST['emailLog'])&& isset($_POST['passwordLog']))
+               {
+                  
+                     Dashboard::checkUser(htmlentities($_POST['emailLog']),htmlentities($_POST['passwordLog']));
+                  
+               }
+               elseif(!empty($_POST['first_name'])&&!empty($_POST['last_name'])&&!empty($_POST['email'])&&!empty($_POST['password'])&&!empty($_POST['role']))
+               {
+                  var_dump($_POST['email']);
+                  Dashboard::addUserDashboard(htmlentities($_POST['first_name']),
+                                             htmlentities($_POST['last_name']),
+                                             htmlentities($_POST['email']),
+                                             htmlentities($_POST['password']),
+                                             htmlentities($_POST['role']));
+               }
+              
+               else
+               {
+               return Controller::viewPage('../view/pages/dashboardView.php');
+               }
 
         }
         elseif($this->page==='dashboardList')

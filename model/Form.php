@@ -1,4 +1,5 @@
 <?php
+namespace ABI\model;
 class Form
 {
     private $data;

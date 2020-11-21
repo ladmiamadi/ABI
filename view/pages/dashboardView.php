@@ -1,6 +1,7 @@
 <?php
 
 use ABI\controller\Controller;
+use \ABI\controller\Dashboard;
 
 $title='Tableau de bord';
 session_start();
@@ -19,7 +20,7 @@ ob_start();
 <hr class="py-0 my-0">
 <div class='row p-2 bonjour mx-0'>
         <div class='col'>
-        <h4 class="p-3">Bonjour<em> <?= $first_name.' '.$last_name; ?></em></h4>
+        <h4 class="p-3">Bonjour<em> <?= strtoupper($first_name).' '.strtoupper($last_name); ?></em></h4>
 
         </div>
         <div class="col text-right">
@@ -30,6 +31,17 @@ ob_start();
 </div>
 
 <hr class="py-0 my-0">
+<?php
+                    if(isset($_GET['successAdd']))
+                    {
+                ?>
+                    <div class="alert alert-success">
+                           Utilisateur ajouté avec succés!
+
+                    </div>
+                <?php
+                    }
+                ?>
 
 <div class="row modif text-center mb-4">
         <div class="col">
@@ -46,10 +58,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/update.jpg"></a>
+                  <a href="../public/index.php?page=dashboard&amp;action=modifyUser" class="nav-link"><img src="./IMG/update.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboardList">Modifier les utilisateurs</a>
+                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=modifyUser">Modifier les utilisateurs</a>
                 </li>   
             </ul>
                
@@ -57,10 +69,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/adduser.jpg"></a>
+                  <a href="../public/index.php?page=dashboard&amp;action=addUser" class="nav-link"><img src="./IMG/adduser.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboardList">Ajouter un utilisateur</a>
+                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=addUser">Ajouter un utilisateur</a>
                 </li>   
             </ul>
                
@@ -78,25 +90,14 @@ ob_start();
         </div>
 </div>
 
-<div class='row'>
-            <div class="col-3">
-                
 
-            </div>
-            <div class="col-1">
-                   
-                
-            </div>
-                <div class="col"></div>
-
-        
-</div>
 <?php 
             
     $results=Controller::$results;
     if(!empty($results))
                 {
 ?>
+
 <div class='row'>
 
     <div class="col px-4">
@@ -107,7 +108,7 @@ ob_start();
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Email</th>
-                <th>Role</th>
+                <th>Rôle</th>
                 <th></th>
             </tr>
             </thead>
@@ -126,14 +127,34 @@ ob_start();
             </tr>
            <?php
                     }
-                }
+                
            ?>
             </tbody>
         </table>
     </div>
 </div>
            
-            
+   <?php
+    }
+    elseif(isset($_GET['action'])&& $_GET['action']==='addUser')
+                {
+                    Controller::viewPage('../view/section/addUserView.php');
+                   
+                }
+        elseif(isset($_GET['action'])&& $_GET['action']==='modifyUser')
+                {
+                    Controller::viewPage('../view/section/modifyUserView.php');
+                   
+                    
+
+                }
+                
+                                        
+                                        
+                                    
+
+                            ?>
+   </div>         
 
     <?php $content=ob_get_clean(); ?>
 

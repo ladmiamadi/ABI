@@ -1,6 +1,8 @@
-<?php require '../view/template/header_admin.php'; ?>
+<?php 
 
-        <section class='container px-0'>
+require '../view/template/header_admin.php'; ?>
+
+        <section class='container px-0 pb-4'>
 
             <?= $content ?>
 

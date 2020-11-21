@@ -2,6 +2,7 @@
 namespace ABI\controller;
 use \ABI\model\Database;
 
+
 class Dashboard
 {
     public static function viewUsers()
@@ -14,7 +15,7 @@ class Dashboard
     {
         $results= new Database('abi');
         $result=$results->getUser($email,$password);
-        var_dump($result->first_name);
+        
         if(!empty($result))
         {
             session_start();
@@ -24,8 +25,26 @@ class Dashboard
         }
         else
         {
-            header('Location:./index.php?page=connexion');
+            header('Location:./index.php?page=connexion&error=true');
         }
     }
+    public static function addUserDashboard($first_name, $last_name, $email, $password, $role)
+    {
+        $results= new Database('abi');
+        $result=$results->addUser($first_name,$last_name,$email,$password,$role);
+        header('Location:./index.php?page=dashboard&successAdd=true');
+       
+        return $result;
+    }
+
+
+    
+    public static function modifyUserDashboard($value)
+    {
+        $results= new Database('abi');
+        return $results->showUser($value);
+    }
+    
+   
 }
 ?>

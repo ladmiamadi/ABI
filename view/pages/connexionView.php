@@ -1,17 +1,30 @@
 <?php $title='Se connecter'; ?>
 
 <?php ob_start() ?>
+
 <div class='section-form pb-5'>
+    
     <hr class="my-0 py-0">
            <div class="container formulaire mt-5 w-75 py-5">
                <form action="./index.php?page=dashboard" method="POST">
+               <?php
+                    if(isset($_GET['error']))
+                    {
+                ?>
+                    <div class="alert alert-danger">
+                            Email ou mot de passe incorrect!
+
+                    </div>
+                <?php
+                    }
+                ?>
                    <div class="form-group">
-                        <label for="email">Identifiant ou Email: </label>
-                        <input  class="form-control" type="text" name="email" id='email'>
+                        <label for="emailLog">Identifiant ou Email: </label>
+                        <input  class="form-control" value='' type="text" name="emailLog" id='emailLog'>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mot de passe: </label>
-                        <input class="form-control" type="text" name="password" id='password'>
+                        <label for="passwordLog">Mot de passe: </label>
+                        <input class="form-control" value='' type="password" name="passwordLog" id='passwordLog'>
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">

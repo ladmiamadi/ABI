@@ -1,18 +1,27 @@
 <?php
 
+
 use ABI\controller\Controller;
-use \ABI\controller\Dashboard;
+
+use \ABI\model\Database;
+use \ABI\controller\Auth;
 
 $title='Tableau de bord';
-session_start();
-if(!empty($_SESSION))
+
+
+$data= new Database('abi');
+$auth= new Auth($data->getPDO());
+
+if($auth->user()!==null)
 {
+    //session_start();
     $first_name=$_SESSION['first_name'];
     $last_name=$_SESSION['last_name'];
+    //header('Location:./index.php?page=dashboard');
 }
 else
 {
-    header('Location:./index.php?page=connexion');
+   header('Location:./index.php?page=connexion');
 }
 ob_start(); 
 ?>

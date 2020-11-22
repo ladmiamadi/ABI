@@ -11,17 +11,19 @@ class Dashboard
         return $results->getUsers();
        
     }
+    
     public static function checkUser($email, $password)
     {
-        $results= new Database('abi');
-        $result=$results->getUser($email,$password);
+        $data= new Database('abi');
+        $auth= new Auth($data->getPDO());
+
+        $result=$auth->login($email,$password);
         
         if(!empty($result))
         {
-            session_start();
-            $_SESSION['first_name']=$result->first_name;
-            $_SESSION['last_name']=$result->last_name;
-            header('Location:./index.php?page=dashboard&first_name='.$result->first_name.'&last_name='.$result->last_name);
+        
+        
+            header('Location:./index.php?page=dashboard');
         }
         else
         {

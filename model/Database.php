@@ -10,7 +10,7 @@ class Database
     private $db_user;
     private $db_pass;
     private $db_host;
-    private $pdo;
+    public static $pdo;
 
     private static $database;
 
@@ -22,17 +22,17 @@ class Database
         $this->db_host=$db_host;
     }
 
-    private function getPDO()
+    public static function getPDO()
     {
         try
         {
-            if($this->pdo===null)
+            if(self::$pdo===null)
             {
                 $pdo= new PDO('mysql:host=localhost;dbname=abi','root', '');
                 $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                $this->pdo=$pdo;
+                self::$pdo=$pdo;
             }
-            return $pdo;
+            return self::$pdo;
         }
         catch(Exception $e)
         {
@@ -127,7 +127,7 @@ class Database
     }
     public function showUser($value)
     {
-        //try{
+        try{
             $req= $this->getPDO()->prepare('SELECT * FROM utilisateur WHERE first_name=:first_name OR last_name=:last_name');
             $req->execute([
                 'first_name'=>$value,
@@ -135,11 +135,11 @@ class Database
             ]);
             return $req->fetchALL(PDO::FETCH_OBJ);
         
-      //  }
-        //catch(Exception $e)
-        //{
-            //die($e->getMessage());
-        //}
+       }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
     }
 }
 ?>

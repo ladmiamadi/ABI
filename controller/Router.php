@@ -50,17 +50,18 @@ class Router
                }
                elseif(!empty($_POST['first_name'])&&!empty($_POST['last_name'])&&!empty($_POST['email'])&&!empty($_POST['password'])&&!empty($_POST['role']))
                {
-                  var_dump($_POST['email']);
+                  $pass= htmlentities($_POST['password']);
+                  $pass= password_hash($pass, PASSWORD_DEFAULT);
                   Dashboard::addUserDashboard(htmlentities($_POST['first_name']),
                                              htmlentities($_POST['last_name']),
                                              htmlentities($_POST['email']),
-                                             htmlentities($_POST['password']),
+                                             $pass,
                                              htmlentities($_POST['role']));
                }
               
                else
                {
-               return Controller::viewPage('../view/pages/dashboardView.php');
+              return Controller::viewPage('../view/pages/dashboardView.php');
                }
 
         }

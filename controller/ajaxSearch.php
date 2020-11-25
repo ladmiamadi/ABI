@@ -4,7 +4,7 @@ use \ABI\controller\Dashboard;
 require '../controller/Controller.php';
 require '../controller/Dashboard.php';
 require '../model/Database.php';
-session_start();
+
 
 if(!empty($_GET['search'])){
 

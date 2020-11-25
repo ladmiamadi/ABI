@@ -21,8 +21,8 @@
             </div>
             <div class='col p-4'>
                 <ul class="nav flex-column text-center">
-                   <li><a class="" href="gestion_commerciale.php"><img src="./IMG/commercial.png"class="gestion"></a></li>
-                   <li><a href="#" class="nav-link">Gestion commerciale</a></li> 
+                   <li><a class="" href="./index.php?page=buisness"><img src="./IMG/commercial.png"class="gestion"></a></li>
+                   <li><a href="./index.php?page=buisness" class="nav-link">Gestion commerciale</a></li> 
                 </ul>
                 
             </div>

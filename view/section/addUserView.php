@@ -38,8 +38,8 @@
                   <select name="role" id='role' class="form-control"> 
                         <option>Administrateur</option>
                         <option>Commercial</option>
-                        <option>Directeur commercial</option>
-                        <option>Directeur ressources humaines</option>
+                        <option>Assistant</option>
+                        <option>Ressources Humaines</option>
                   </select> 
 
                 </div>

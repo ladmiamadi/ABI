@@ -1,6 +1,7 @@
 <?php
 namespace ABI\controller;
 use \PDO;
+use \ABI\model\Database;
 
 
 class Auth
@@ -53,6 +54,50 @@ class Auth
         }
         return null;
 
+    }
+    public static function checkRoleAdmin():string
+    {
+        $data= new Database('abi');
+        $auth= new Auth($data->getPDO());
+        $user=$auth->user();
+
+        if($user!==null&& $user->role==='Administrateur')
+        {
+            if(session_status()===PHP_SESSION_NONE)
+            {
+                
+                session_start();
+            }
+            return $user->role;
+         
+        }
+        else
+        {
+        header('Location:./index.php?page=connexion&forbidden=1');
+        exit();
+        }
+    }
+
+    public static function checkRoleBuisness():string
+    {
+        $data= new Database('abi');
+        $auth= new Auth($data->getPDO());
+        $user=$auth->user();
+
+        if ($user!==null&& ($user->role==='Commercial'|| $user->role==='Administrateur'))
+                                            
+        {
+            if(session_status()===PHP_SESSION_NONE)
+            {
+                session_start();
+            }
+            return $user->role;
+        }
+        else
+        {
+        header('Location:./index.php?page=connexion&forbidden=1');
+        exit();
+        }
     }
    
 }

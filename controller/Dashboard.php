@@ -22,8 +22,14 @@ class Dashboard
         if(!empty($result))
         {
         
-        
-            header('Location:./index.php?page=dashboard');
+            if($result->role==='Administrateur')
+            {
+                header('Location:./index.php?page=dashboard');
+            }
+            elseif($result->role==='Commercial')
+            {
+                header('Location:./index.php?page=buisness');
+            }
         }
         else
         {

@@ -3,33 +3,23 @@
 
 use ABI\controller\Controller;
 
-use \ABI\model\Database;
+
 use \ABI\controller\Auth;
 
 $title='Tableau de bord';
 
 
-$data= new Database('abi');
-$auth= new Auth($data->getPDO());
+Auth::checkRoleAdmin();
+$first_name=$_SESSION['first_name'];
+$last_name=$_SESSION['last_name'];
 
-if($auth->user()!==null)
-{
-    //session_start();
-    $first_name=$_SESSION['first_name'];
-    $last_name=$_SESSION['last_name'];
-    //header('Location:./index.php?page=dashboard');
-}
-else
-{
-   header('Location:./index.php?page=connexion');
-}
 ob_start(); 
 ?>
 
 <hr class="py-0 my-0">
 <div class='row p-2 bonjour mx-0'>
         <div class='col'>
-        <h4 class="p-3">Bonjour<em> <?= strtoupper($first_name).' '.strtoupper($last_name); ?></em></h4>
+        <div class="p-3 alert alert-success">Vous étes connecté en tant que <?= strtoupper($first_name).' '.strtoupper($last_name); ?></div>
 
         </div>
         <div class="col text-right">
@@ -56,10 +46,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/users.jpg"></a>
+                  <a href="../public/index.php?page=dashboard&amp;action=dashboardList" class="nav-link"><img src="./IMG/users.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboardList">Afficher les utilisateurs</a>
+                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=dashboardList">Afficher les utilisateurs</a>
                 </li>   
             </ul>
                
@@ -101,68 +91,29 @@ ob_start();
 
 
 <?php 
-            
-    $results=Controller::$results;
-    if(!empty($results))
-                {
-?>
+    if(isset($_GET['action']))
+    {
 
-<div class='row'>
-
-    <div class="col px-4">
-    
-            <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Rôle</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-                
-                    foreach($results as $result)
+                    if($_GET['action']==='dashboardList')
                     {
-            ?>
-            <tr>
-                <td><?= $result->first_name?></td>
-                <td><?= $result->last_name?></td>
-                <td><?= $result->email?></td>
-                <td><?= $result->role?></td>
-                <td><a href="#">Modifier</a></td>
-            </tr>
-           <?php
+                        Controller::viewPage('../view/section/listView.php');
                     }
+                            
                 
-           ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-           
-   <?php
+                    elseif($_GET['action']==='addUser')
+                    {
+                        Controller::viewPage('../view/section/addUserView.php');
+                                
+                    }
+                    elseif($_GET['action']==='modifyUser')
+                    {
+                        Controller::viewPage('../view/section/modifyUserView.php');
+                                
+                    }
+                                            
     }
-    elseif(isset($_GET['action'])&& $_GET['action']==='addUser')
-                {
-                    Controller::viewPage('../view/section/addUserView.php');
-                   
-                }
-        elseif(isset($_GET['action'])&& $_GET['action']==='modifyUser')
-                {
-                    Controller::viewPage('../view/section/modifyUserView.php');
-                   
-                    
-
-                }
-                
-                                        
-                                        
-                                    
-
-                            ?>
+                                
+?>
    </div>         
 
     <?php $content=ob_get_clean(); ?>

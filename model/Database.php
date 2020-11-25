@@ -3,16 +3,17 @@ namespace ABI\model;
 
 use Exception;
 use \PDO;
+use User;
 
 class Database
 {
-    private $db_name;
-    private $db_user;
-    private $db_pass;
-    private $db_host;
+    protected $db_name;
+    protected $db_user;
+    protected $db_pass;
+    protected $db_host;
     public static $pdo;
 
-    private static $database;
+    protected static $database;
 
     public function __construct($db_name, $db_user='root', $db_pass='', $db_host='localhost')
     {
@@ -22,7 +23,7 @@ class Database
         $this->db_host=$db_host;
     }
 
-    public static function getPDO()
+    public static function getPDO(): PDO
     {
         try
         {
@@ -54,14 +55,12 @@ class Database
             die($e->getMessage());
         }
     }
-    public function getUser($email, $password)
+    public function getUser(int $id):?User
     {
         try{
-            $req=$this->getPDO()->prepare("SELECT * FROM utilisateur WHERE email=:email AND password=:password");
-            $req->execute([
-                'email'=>$email,
-                'password'=>$password
-            ]);
+            $req=$this->getPDO()->prepare("SELECT * FROM utilisateur WHERE id_user:id");
+            $req->bindValue(':id', $id, PDO::PARAM_INT);
+            $req->execute();
             
             return $req->fetch(PDO::FETCH_OBJ);
             
@@ -74,15 +73,14 @@ class Database
         }
 
     }
-    public function updateUser($id,$role)
+    public function updateUser(int $id, string $role)
     {
         try
         {
             $req= $this->getPDO()->prepare('UPDATE utilisateur SET role= :role WHERE id_user=:id');
-            $req->execute([
-                'role'=>$role,
-                'id'=>$id
-            ]);
+            $req->bindValue(':id', $id, PDO::PARAM_INT);
+            $req->bindValue(':role', $role, PDO::PARAM_STR);
+            $req->execute();
         }
         catch(Exception $e)
         {
@@ -90,15 +88,13 @@ class Database
         }
 
     }
-    public function deleteUser($id)
+    public function deleteUser(int $id)
     {
         try
         {
             $req= $this->getPDO()->prepare('DELETE FROM utilisateur WHERE id_user=:id');
-            $req->execute([
-            
-                'id'=>$id
-            ]);
+            $req->bindValue(':id', $id, PDO::PARAM_INT);
+            $req->execute();
         }
         catch(Exception $e)
         {
@@ -106,7 +102,7 @@ class Database
         }
 
     }
-    public function addUser($first_name, $last_name, $email, $password, $role)
+    public function addUser(string $first_name, string $last_name, string $email, string $password,string $role)
     {
         try
         {
@@ -125,7 +121,7 @@ class Database
             die($e->getMessage());
         }
     }
-    public function showUser($value)
+    public function showUser(string $value)
     {
         try{
             $req= $this->getPDO()->prepare('SELECT * FROM utilisateur WHERE first_name=:first_name OR last_name=:last_name');
@@ -134,6 +130,25 @@ class Database
                 'last_name'=>$value
             ]);
             return $req->fetchALL(PDO::FETCH_OBJ);
+        
+       }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+    public function showClients($value)
+    {
+        try{
+            
+            $req= $this::getPDO();
+            $requete=$req->prepare("SELECT * FROM clients WHERE RAISONSOCIALE=:raison_sociale OR VILLECLIENT=:ville OR TELEPHONECLIENT=:telephone");
+            $requete->execute([
+                'raison_sociale'=>$value,
+                'ville'=>$value,
+                'telephone'=>$value
+            ]);
+            return $requete->fetchALL(PDO::FETCH_OBJ);
         
        }
         catch(Exception $e)

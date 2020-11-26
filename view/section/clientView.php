@@ -14,6 +14,31 @@ use \ABI\controller\Controller;
                 <?php
                     }
                 ?>
+
+<?php
+                    if(isset($_GET['successUpdate']))
+                    {
+                ?>
+                    <div class="alert alert-success mt-4">
+                           Client mis à jour avec succés!
+
+                    </div>
+                <?php
+                    }
+                    
+                ?>
+               
+<?php
+                    if(isset($_GET['successDelete']))
+                    {
+                ?>
+                    <div class="alert alert-success mt-4">
+                           Client supprimé avec succés!
+
+                    </div>
+                <?php
+                    }
+                ?>
     <?php
 if(isset($_GET['action']))
     {
@@ -35,7 +60,12 @@ if(isset($_GET['action']))
                     }
                     elseif($_GET['action']==='detailClient')
                     {
-                        Controller::viewPage('../view/section/detailClientView.php');
+                        if(isset($_GET['detail']))
+                        {
+                            $_SESSION['id_client']=htmlentities($_GET['detail']);
+                            Controller::viewPage('../view/section/detailClientView.php');
+
+                        }
                                 
                     }
                    

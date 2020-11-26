@@ -57,6 +57,41 @@ class Buisness
         }
         return $result;
     }
+    public static function showDetailClient($id_client)
+    {
+        try
+        {
+            $results= new Client('abi');
+            $result=$results->getClient($id_client);
+       
+        }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+        return $result;
+    }
+   public static function updateClientBuisness($id_client,$id_secteur, $raison_sociale, $adresse, $code_postale, $ville, $effectif, $telephone)
+   {
+    $results= new Client('abi');
+   
+    $status=$results->updateClient((int)$id_client,(int) $id_secteur,$raison_sociale,$adresse,(int)$code_postale,$ville,(int)$effectif, (int)$telephone);
+    
+    header('Location:./index.php?page=buisness&successUpdate=true');
+   
+
+   }
+   public static function deleteClientBuisness($id_client)
+   {
+    $results= new Client('abi');
+    $status=$results->deleteClient((int)$id_client);
+    
+    
+        header('Location:./index.php?page=buisness&successDelete=true');
+    
+
+   }
+
     
 }
 

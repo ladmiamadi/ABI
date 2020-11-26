@@ -77,18 +77,71 @@ class Router
                &&!empty($_POST['code_postale'])&&!empty($_POST['ville'])
                &&!empty($_POST['effectif'])&&!empty($_POST['telephone'])))
             {
-               Buisness::addClientBuisness(  htmlentities($_POST['secteur']),
-                                             htmlentities($_POST['raison_sociale']),
-                                             htmlentities($_POST['adresse']),
-                                             htmlentities($_POST['code_postale']),
-                                             htmlentities($_POST['ville']),
-                                             htmlentities($_POST['effectif']),
-                                             htmlentities($_POST['telephone']));
-            }
-            else
+               /*
+                        $error=[];
+                        unset($_SESSION['error']);
+                        
+                        if(!preg_match('\^[a-zA-Z]{3,50}$\ ', $_POST['ville']))
+                        {
+                           $error['ville']='La ville n\'est pas valide';
+
+                        }
+                        if(!preg_match('\^[0-9]{5,5}$\ ',$_POST['code_postale']))
+                        {
+                           $error['code_postale']='Le code postale n\'est pas valide';
+                        }
+                        if(!filter_var($_POST['effectif'],FILTER_VALIDATE_INT))
+                        {
+                           $error['effectif']='l\'effectif nest pas valide';
+                        }
+                        if(!preg_match(' \^(\d\d\s){4}(\d\d)$\ ', $_POST['telephone']))
+                        {
+                           $error['telephone']='Le numéro de téléphone n\'est pas valide';
+                        }
+                     if(!empty($error))
+                     {
+                        $_SESSION['error']=$error;  
+                     
+                        header('Location:./index.php?page=buisness&action=addClient');
+
+                     }
+                     else
+                     { */
+                     Buisness::addClientBuisness(  htmlentities($_POST['secteur']),
+                                                   htmlentities($_POST['raison_sociale']),
+                                                   htmlentities($_POST['adresse']),
+                                                   htmlentities($_POST['code_postale']),
+                                                   htmlentities($_POST['ville']),
+                                                   htmlentities($_POST['effectif']),
+                                                   htmlentities($_POST['telephone']));
+                     //}
+               }
+            elseif(isset($_POST['update']))
             {
-               return Controller::viewPage('../view/pages/buisnessView.php');
-            }
+                     if((!empty($_POST['secteurd'])&&!empty($_POST['raison_socialed'])&&!empty($_POST['adressed'])
+                     &&!empty($_POST['code_postaled'])&&!empty($_POST['villed'])
+                     &&!empty($_POST['effectifd'])&&!empty($_POST['telephoned'])))
+                  {
+                     Buisness::updateClientBuisness($_POST['id_clientd'], htmlentities($_POST['secteurd']),
+                                                   htmlentities($_POST['raison_socialed']),
+                                                   htmlentities($_POST['adressed']),
+                                                   htmlentities($_POST['code_postaled']),
+                                                   htmlentities($_POST['villed']),
+                                                   htmlentities($_POST['effectifd']),
+                                                   htmlentities($_POST['telephoned']));
+                  }
+               }
+               elseif(isset($_POST['delete']))
+               {
+                  echo var_dump((int)$_POST['id_clientd']);
+                  
+                     Buisness::deleteClientBuisness($_POST['id_clientd']);
+                  
+               }
+               else
+               {
+                  return Controller::viewPage('../view/pages/buisnessView.php');
+               }
          }
           
         else

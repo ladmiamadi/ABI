@@ -8,4 +8,13 @@ $(document).ready(function(){
        
     })
     
+
+    $('.modify').click(function(e){
+        $("input").prop('disabled', false);
+        $('.modify').hide();
+        $('.valider, .supprimer').removeClass('d-none');
+        e.preventDefault();
+        
+    })
+    
 })

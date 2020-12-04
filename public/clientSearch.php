@@ -48,7 +48,7 @@ if(!empty($_GET['search'])){
          <td class="col"><?= $result->ADRESSECLIENT?></td>
          <td class="col-2"><?= $result->VILLECLIENT ?></td>
          
-         <td class="col-2 text-center"><a href="./index.php?page=buisness&amp;action=detailClient&amp;detail=<?= $result->IDCLIENT ?>"><i class="fas fa-info-circle"></i></a></td>
+         <td class="col-2 text-center"><a href="./index.php?page=buisness&amp;action=detailClient&amp;detail="<?= $result->IDCLIENT ?>><i class="fas fa-info-circle"></i></a></td>
          
      </tr>
     <?php

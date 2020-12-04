@@ -9,7 +9,7 @@ function showUser(str) {
           document.getElementById("result").innerHTML = this.responseText;
         }
       };
-      xmlhttp.open("GET","../controller/ajaxSearch.php?search="+str,true);
+      xmlhttp.open("GET","../ajaxSearch.php?search="+str,true);
       xmlhttp.send();
     }
   }
@@ -26,7 +26,7 @@ function showUser(str) {
           document.getElementById("result").innerHTML = this.responseText;
         }
       };
-      xmlhttp.open("GET","../controller/clientSearch.php?search="+str,true);
+      xmlhttp.open("GET","../clientSearch.php?search="+str,true);
       xmlhttp.send();
     }
   }

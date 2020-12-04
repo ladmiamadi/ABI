@@ -46,10 +46,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboard&amp;action=dashboardList" class="nav-link"><img src="./IMG/users.jpg"></a>
+                  <a href="./index.php?page=dashboard&amp;action=dashboardList" class="nav-link"><img src="./IMG/users.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=dashboardList">Afficher les utilisateurs</a>
+                 <a class="nav-link" href="../index.php?page=dashboard&amp;action=dashboardList">Afficher les utilisateurs</a>
                 </li>   
             </ul>
                
@@ -57,10 +57,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboard&amp;action=modifyUser" class="nav-link"><img src="./IMG/update.jpg"></a>
+                  <a href="../index.php?page=dashboard&amp;action=modifyUser" class="nav-link"><img src="./IMG/update.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=modifyUser">Modifier les utilisateurs</a>
+                 <a class="nav-link" href="../index.php?page=dashboard&amp;action=modifyUser">Modifier les utilisateurs</a>
                 </li>   
             </ul>
                
@@ -68,10 +68,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboard&amp;action=addUser" class="nav-link"><img src="./IMG/adduser.jpg"></a>
+                  <a href="../index.php?page=dashboard&amp;action=addUser" class="nav-link"><img src="./IMG/adduser.jpg"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboard&amp;action=addUser">Ajouter un utilisateur</a>
+                 <a class="nav-link" href="../index.php?page=dashboard&amp;action=addUser">Ajouter un utilisateur</a>
                 </li>   
             </ul>
                
@@ -79,10 +79,10 @@ ob_start();
         <div class="col">
             <ul class="nav nav flex-column">
               <li class="nav-item">
-                  <a href="../public/index.php?page=dashboardList" class="nav-link"><img src="./IMG/delete.png"></a>
+                  <a href="../index.php?page=dashboardList" class="nav-link"><img src="./IMG/delete.png"></a>
                 </li>
              <li class="nav-item">
-                 <a class="nav-link" href="../public/index.php?page=dashboardList">Supprimer un utilisateur</a>
+                 <a class="nav-link" href="../index.php?page=dashboardList">Supprimer un utilisateur</a>
                 </li>   
             </ul>
                

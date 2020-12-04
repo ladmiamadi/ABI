@@ -1,7 +1,7 @@
         <footer class="container text-center p-4">
                     <div class="row">
                         <div class="col-md-4 col-12">
-                            <img class="img-fluid" alt="logo" src="../public/IMG/abi_footer.png">
+                            <img class="img-fluid" alt="logo" src="../IMG/abi_footer.png">
                         </div>
                         <div class="navbar col-md-4 col-12 text-center">
                             <ul class="navbar-nav text-center">
@@ -18,7 +18,7 @@
 
                         </div>
                         <div class="col-md-4 col-12">
-                            <img alt="system" src="../public/IMG/syntec.png">
+                            <img alt="system" src="../IMG/syntec.png">
 
                         </div>
 
@@ -30,10 +30,10 @@
     
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
     <script src="./js/app.js"></script>
     <script src="./js/lateral.js"></script>
-                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
